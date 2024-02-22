@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
 	// para el prefab de los pickups
 	public GameObject pickupPrefab;
 
+	// para el prefab de las columnas
+	public GameObject ColumnsPrefab;
+
 	public int minPickups = 5; // Minimum number of pickups to spawn
     public int maxPickups = 10; // limite superior de pickups a spawnear
 
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Hola, debugueando");
 		count = 0;
 		SpawnPickupsRandomly();
+		SpawnColumnsRandomly();
 		SetCountText();
 		winTextObject.SetActive(false);
     }
@@ -86,7 +90,14 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("PickUp")){
             other.gameObject.SetActive(false);
 			count++;
+			speed = speed + 1;
 			SetCountText();
+        }
+        if (other.gameObject.CompareTag("Enemy")){
+			speed = speed -1;
+        }
+        if (other.gameObject.CompareTag("Columns")){
+			speed = speed -1;
         }
     }
 
@@ -100,6 +111,18 @@ public class PlayerController : MonoBehaviour
             Vector3 spawnPosition = new Vector3(Random.Range(-10f, 10f), 0.5f, Random.Range(-10f, 10f));
 
             Instantiate(pickupPrefab, spawnPosition, Quaternion.identity);
+        }
+    }
+	void SpawnColumnsRandomly()
+    {
+        int numColumnsToSpawn = Random.Range(minPickups, maxPickups + 1);
+
+        for (int i = 0; i < numColumnsToSpawn; i++)
+        {
+            // Random position within a certain range (you can adjust as needed)
+            Vector3 spawnPosition = new Vector3(Random.Range(-10f, 10f), 0.5f, Random.Range(-10f, 10f));
+
+            Instantiate(ColumnsPrefab, spawnPosition, Quaternion.identity);
         }
     }
 
