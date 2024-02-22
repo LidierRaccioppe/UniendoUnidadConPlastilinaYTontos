@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
 	public int minPickups = 5; // Minimum number of pickups to spawn
     public int maxPickups = 10; // limite superior de pickups a spawnear
-
+//
     // Start is called before the first frame update
     void Start()
     {

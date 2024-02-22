@@ -59,7 +59,14 @@ int CountPickupsLeft(string tag = "PickUp")
     return pickupCount;
 }
 ```
+## Gifs y animator
+Los enemigos apareciendo
+![Alt Text](./Imagenes/gif1.gif)
 
 
+Las columnas apareciendo
+![Alt Text](./Imagenes/gif2.gif)
+
+En todas se ve como el tamaño de la bola cambia
 
 
